@@ -10,13 +10,15 @@ input_area = tk.Frame(window)
 input_area.pack()
 
 def hello(event):
+    value = entry.get()
+    current_value = event.keysym
+    print(current_value)
+    try:
+        int(current_value)
+    except ValueError:
+        entry.delete(len(value)-1,len(value))
+        print('not number') 
     print(entry.get())
-
-# def callback(sv, name, index, mode):
-#     print('\nsv: ', sv.get())
-
-# sv = tk.StringVar()
-# sv.trace("w", lambda name, index, mode, sv=sv: callback(sv, name, index, mode))
 
 entry = tk.Entry(input_area, fg="yellow", bg="Gray")
 entry.pack()
